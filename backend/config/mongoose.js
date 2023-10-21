@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-
+const env = require("../config/environment");
 mongoose
-  .connect("mongodb://127.0.0.1:27017/courses_app_dev")
+  .connect(`mongodb://${env.database_path}/${env.database_name}`)
   .then(() => {
     console.log("📚 Connected to MongoDB");
   })

@@ -1,8 +1,11 @@
 const express = require("express");
 const mongoose = require("./config/mongoose");
+const env = require("./config/environment");
 
 const app = express();
-const port = 3000;
+const port = env.port || 3000;
+
+app.use(express.json());
 
 app.use("/", require("./routes"));
 
