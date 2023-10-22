@@ -7,7 +7,6 @@ module.exports.checkAuth = async function (req, res, next) {
   const authHeader = req.headers.authorization;
   if (!authHeader) return res.status(401).json({ message: "Unauthorized" });
   token = authHeader.split(" ")[1];
-  console.log(token);
   jwt.verify(token, env.jwt_secret, async (err, user) => {
     if (err) return res.status(403).json({ message: "Unauthorized" });
     else {
@@ -17,8 +16,6 @@ module.exports.checkAuth = async function (req, res, next) {
       if (user.role === "user")
         userObj = await User.findOne({ username: user.username });
       req.user = userObj;
-      console.log(userObj);
-      console.log("Auth Success, Moving forward");
       next();
     }
   });

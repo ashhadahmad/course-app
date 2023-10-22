@@ -58,7 +58,6 @@ module.exports.getCourses = async function (req, res) {
 module.exports.buyCourse = async function (req, res) {
   try {
     const courseId = req.params.courseId;
-    console.log(courseId);
     const course = await Course.findById(courseId);
     if (!course || !course.published)
       return res.status(404).json({ message: "Course not found" });
