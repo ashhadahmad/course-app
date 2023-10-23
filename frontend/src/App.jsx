@@ -1,9 +1,12 @@
-import Signup from "./Signup";
+import SignIn from "./SignIn";
+import SignUp from "./Signup";
 
 function App() {
   return (
     <div>
-      <Signup />
+      {/* TODO: Setup routing */}
+      <SignUp />
+      <SignIn />
     </div>
   );
 }
